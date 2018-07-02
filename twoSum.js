@@ -46,7 +46,32 @@ const twoSum = (arr, target) => {
     return false;
 }
 
-// Solution 3, Modified problem where you need to use the first number in the array as the target. Return the two numbers that add up to the target or return -1.
+// Solution 3
+// This is the fastest solution to this problem.
+// Sort the array.
+// Walk two pointers inward starting from the front and back of the array.
+// If the two pointers add up to the target number, we are done.
+// If not, they continue walking inward.
+
+const twoSum = (arr, target) => {
+    arr = arr.sort();
+    let front = 0;
+    let back = arr.length - 1;
+
+    while (front < back) {
+        let sum = arr[front] + arr[back];
+        if (sum === target) {
+            return true;
+        } else if (sum < target) {
+            front++;
+        } else {
+            back--;
+        }
+    }
+    return false;
+}
+
+// Solution 4, Modified problem where you need to use the first number in the array as the target. Return the two numbers that add up to the target or return -1.
 // Return the numbers within the following string format: Here are the numbers: [num1], [num2]
 // Inputs: twoSum([5, 8, 2, 1, 6, 3])
 // Outputs: Here are the numbers: 2, 3
@@ -63,3 +88,4 @@ const twoSum = (arr) => {
     }
     return twoArr.join('') || -1;
 }
+
